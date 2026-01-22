@@ -9,13 +9,14 @@ RSpec.describe Ips::Patcher do
     let(:rom_path) { File.join(__dir__, "..", "fixtures", "input.bin") }
     let(:patch_path) { File.join(__dir__, "..", "fixtures", "patch.ips") }
     let(:expected_path) { File.join(__dir__, "..", "fixtures", "output.bin") }
-    let(:output_path) { File.basename(rom_path) + ".patched.#{File.extname(rom_path)}" }
+    let(:output_path) { File.join(__dir__, "..", "fixtures", File.basename(rom_path, File.extname(rom_path)) + ".patched#{File.extname(rom_path)}") }
 
     after do
       File.delete(output_path) if File.exist?(output_path)
     end
 
     it "applies the patch and produces byte-identical output" do
+      puts output_path
       Ips::Patcher.apply(rom_path, patch_path)
 
       expect(File.exist?(output_path)).to be true
