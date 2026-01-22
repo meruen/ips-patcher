@@ -1,5 +1,7 @@
 # Ips::Patcher
 
+[![Gem Version](https://badge.fury.io/rb/ips-patcher.svg)](https://badge.fury.io/rb/ips-patcher)
+
 A Ruby library for applying IPS (International Patching System) patches to video game ROM files. IPS is a binary patch format commonly used to distribute patches for ROM images, such as translation patches, bug fixes, or game modifications.
 
 ## Features
