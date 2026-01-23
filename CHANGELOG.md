@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.1] - 2026-01-23
+
+### Added
+- Optional `output` parameter to `Ips::Patcher.apply` method for specifying custom output file path
+
 ## [0.1.0] - 2026-01-20
 
 ### Added
@@ -26,4 +31,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Handles both standard and RLE-compressed patch records
 - Creates new patched ROM file without modifying the original
 
+[0.1.1]: https://github.com/meruen/ips-patcher/releases/tag/v0.1.1
 [0.1.0]: https://github.com/meruen/ips-patcher/releases/tag/v0.1.0
