@@ -40,7 +40,7 @@ module Ips
     #   # Output: game.patched.nes
     #
     # @note The original ROM file is not modified; a new patched file is created
-    def self.apply(rom_path, patch_path)
+    def self.apply(rom_path, patch_path, output: nil)
       rom = File.binread(rom_path)
       patch = File.binread(patch_path)
 
@@ -72,10 +72,14 @@ module Ips
         writer.set_bytes(offset, bytes)        
       end
 
-      rom_dir     = File.dirname(rom_path)
-      filename    = File.basename(rom_path, File.extname(rom_path))
-      extension   = File.extname(rom_path)
-      output_path = File.join(rom_dir, "#{filename}.patched#{extension}")
+      output_path = output
+
+      unless output_path
+        rom_dir     = File.dirname(rom_path)
+        filename    = File.basename(rom_path, File.extname(rom_path))
+        extension   = File.extname(rom_path)
+        output_path = File.join(rom_dir, "#{filename}.patched#{extension}")
+      end
 
       writer.save_to_file(output_path)
     end
