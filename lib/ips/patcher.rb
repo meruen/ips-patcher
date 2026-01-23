@@ -23,8 +23,9 @@ module Ips
     # Applies an IPS patch file to a ROM file.
     #
     # This method reads both the ROM and patch files, validates the patch format,
-    # and applies all patch records to create a new patched ROM file. The output
-    # file is named with ".patched" inserted before the file extension.
+    # and applies all patch records to create a new patched ROM file. If no output
+    # path is specified, the output file is named with ".patched" inserted before
+    # the file extension.
     #
     # The IPS format supports two types of records:
     # - Standard records: Replace bytes at a specific offset
@@ -32,12 +33,19 @@ module Ips
     #
     # @param rom_path [String] path to the ROM file to be patched
     # @param patch_path [String] path to the IPS patch file
+    # @param output [String, nil] optional path for the output file. If nil, the
+    #   output file is automatically named with ".patched" inserted before the
+    #   file extension
     # @raise [Error] if the patch file does not have a valid "PATCH" header
     # @return [void]
     #
-    # @example Apply a patch
+    # @example Apply a patch with automatic output naming
     #   Ips::Patcher.apply("game.nes", "translation.ips")
     #   # Output: game.patched.nes
+    #
+    # @example Apply a patch with custom output path
+    #   Ips::Patcher.apply("game.nes", "translation.ips", output: "patched_game.nes")
+    #   # Output: patched_game.nes
     #
     # @note The original ROM file is not modified; a new patched file is created
     def self.apply(rom_path, patch_path, output: nil)
